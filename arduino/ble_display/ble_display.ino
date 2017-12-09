@@ -34,7 +34,7 @@ const int FRAME_DELAY = 100;
 /* Sends a command to the Bluetooth controller via serial port */
 static void bleSend(String s)
 {
-  Serial1.print(s);
+  Serial.print(s);
   delay(100);
   processBle();
 }
@@ -51,7 +51,7 @@ void setup()
   pinMode(OE_PIN, OUTPUT);
   digitalWrite(OE_PIN, LOW);
 
-  Serial1.begin(BLUETOOTH_SERIAL_SPEED);
+  Serial.begin(BLUETOOTH_SERIAL_SPEED);
   delay(100);
 
   bleSend("AT");
@@ -77,8 +77,8 @@ static int lastShownCommand = ON;
 /* Reads a byte from the Bluetooth controller via serial port */
 static void processBle()
 {
-  while (Serial1.available()) {
-    command = (byte)Serial1.read();
+  while (Serial.available()) {
+    command = (byte)Serial.read();
   }
 }
 
